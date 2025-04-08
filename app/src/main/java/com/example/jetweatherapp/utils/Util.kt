@@ -17,7 +17,6 @@ object Util {
         "North West"
     )
 
-
     fun formatUnixDate(pattern: String, time: Long): String {
         val sdf = SimpleDateFormat(pattern, Locale.getDefault())
         return sdf.format(time * 1000)
@@ -40,11 +39,11 @@ object Util {
             3 -> WeatherInfoItem("overcast", R.drawable.over_cast)
             45, 48 -> WeatherInfoItem("Fog", R.drawable.fog)
             51, 53, 55,
-            -> WeatherInfoItem("Drizzle", R.drawable.drizzle)
+                -> WeatherInfoItem("Drizzle", R.drawable.drizzle)
 
             56, 57 -> WeatherInfoItem("Freezing Drizzle", R.drawable.freezing_drizzle)
             61,
-            -> WeatherInfoItem("Rain: Slight", R.drawable.rain_slight)
+                -> WeatherInfoItem("Rain: Slight", R.drawable.rain_slight)
 
             63 -> WeatherInfoItem("Rain: Moderate", R.drawable.rain_heavy)
             65 -> WeatherInfoItem("Rain: Heavy", R.drawable.rain_heavy)
