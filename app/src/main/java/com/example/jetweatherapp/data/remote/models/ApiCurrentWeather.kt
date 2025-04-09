@@ -1,7 +1,6 @@
 package com.example.jetweatherapp.data.remote.models
 
 
-import android.annotation.SuppressLint
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
