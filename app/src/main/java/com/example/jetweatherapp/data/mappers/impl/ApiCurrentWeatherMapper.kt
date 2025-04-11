@@ -6,7 +6,7 @@ import com.example.jetweatherapp.domain.models.CurrentWeather
 import com.example.jetweatherapp.utils.Util
 import com.example.jetweatherapp.utils.WeatherInfoItem
 
-class CurrentWeatherMapper : ApiMapper<CurrentWeather, ApiCurrentWeather> {
+class ApiCurrentWeatherMapper : ApiMapper<CurrentWeather, ApiCurrentWeather> {
 
     override fun mapToDomain(apiEntity: ApiCurrentWeather): CurrentWeather {
         return CurrentWeather(
