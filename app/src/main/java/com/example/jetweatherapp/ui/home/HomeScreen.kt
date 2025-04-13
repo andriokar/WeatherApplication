@@ -11,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
@@ -24,7 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jetweatherapp.R
@@ -131,11 +130,11 @@ fun HourlyWeatherItem(
         ) {
             Text(
                 text = "Today",
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyLarge
             )
             Text(
                 text = Util.formatNormalDate("MMMM,dd", Date().time),
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyLarge
             )
         }
         HorizontalDivider(
@@ -209,7 +208,8 @@ fun SunRiseWeatherItem(
             }
             Text(
                 text = weatherInfo.sunrise,
-                style = MaterialTheme.typography.displayMedium
+                style = MaterialTheme.typography.displayMedium,
+                fontStyle = FontStyle.Italic
             )
         }
     }
@@ -244,7 +244,8 @@ fun SunSetWeatherItem(
             }
             Text(
                 text = weatherInfo.sunset,
-                style = MaterialTheme.typography.displayMedium
+                style = MaterialTheme.typography.displayMedium,
+                fontStyle = FontStyle.Italic
             )
         }
     }
@@ -277,11 +278,13 @@ fun UvIndexWeatherItem(
             }
             Text(
                 text = weatherInfo.uvIndex.toString(),
-                style = MaterialTheme.typography.displayMedium
+                style = MaterialTheme.typography.headlineSmall,
+                fontStyle = FontStyle.Italic
             )
             Text(
+                modifier = modifier.padding(0.dp, 8.dp),
                 text = "Status ${weatherInfo.weatherStatus.info}",
-                style = MaterialTheme.typography.bodyMedium
+                style = MaterialTheme.typography.bodyLarge
             )
         }
     }

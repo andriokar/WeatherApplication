@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -116,14 +117,15 @@ fun DailyScreen(
                                 )
                                 Spacer(modifier = Modifier.width(8.dp))
                                 Text(
-                                    text = "WIND",
-                                    style = MaterialTheme.typography.bodyMedium
+                                    text = "Wind",
+                                    style = MaterialTheme.typography.headlineSmall
                                 )
                             }
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = "${it.windSpeed}km/h ${it.windDirection}",
+                                text = "${it.windSpeed} km/h ${it.windDirection}",
                                 style = MaterialTheme.typography.headlineMedium,
+                                fontStyle = FontStyle.Italic,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis
                             )
