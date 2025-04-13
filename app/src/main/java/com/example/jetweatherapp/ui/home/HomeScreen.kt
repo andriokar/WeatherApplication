@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -23,8 +24,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.jetweatherapp.R
 import com.example.jetweatherapp.domain.models.CurrentWeather
 import com.example.jetweatherapp.domain.models.Daily
 import com.example.jetweatherapp.domain.models.Hourly
@@ -68,8 +71,8 @@ fun HomeScreen(
                             .align(Alignment.Center),
                         horizontalArrangement = Arrangement.SpaceBetween
                     ) {
+                        SunRiseWeatherItem(weatherInfo = it)
                         SunSetWeatherItem(weatherInfo = it)
-                        UvIndexWeatherItem(weatherInfo = it)
                     }
                 }
             }
@@ -178,6 +181,41 @@ fun HourlyWeatherInfoItem(
 }
 
 @Composable
+fun SunRiseWeatherItem(
+    modifier: Modifier = Modifier,
+    weatherInfo: Daily.WeatherInfo
+) {
+    Card(
+        modifier = modifier.padding(horizontal = 8.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.sunrise_ic),
+                    contentDescription = null
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Sunrise",
+                    style = MaterialTheme.typography.headlineSmall
+                )
+            }
+            Text(
+                text = weatherInfo.sunrise,
+                style = MaterialTheme.typography.displayMedium
+            )
+        }
+    }
+}
+
+@Composable
 fun SunSetWeatherItem(
     modifier: Modifier = Modifier,
     weatherInfo: Daily.WeatherInfo
@@ -190,17 +228,23 @@ fun SunSetWeatherItem(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.sunset_ic),
+                    contentDescription = null
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Sunset",
+                    style = MaterialTheme.typography.headlineSmall
+                )
+            }
             Text(
-                text = "Sunrise",
-                style = MaterialTheme.typography.headlineSmall
-            )
-            Text(
-                text = weatherInfo.sunrise,
+                text = weatherInfo.sunset,
                 style = MaterialTheme.typography.displayMedium
-            )
-            Text(
-                text = "Sunset ${weatherInfo.sunset}",
-                style = MaterialTheme.typography.bodyMedium
             )
         }
     }
@@ -211,20 +255,26 @@ fun UvIndexWeatherItem(
     modifier: Modifier = Modifier,
     weatherInfo: Daily.WeatherInfo
 ) {
-    Card(
-        modifier = modifier.padding(horizontal = 8.dp)
-    ) {
+    Card {
         Column(
             modifier = Modifier
-                .padding(16.dp)
-                .wrapContentWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = "UV INDEX",
-                style = MaterialTheme.typography.headlineSmall
-            )
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.uv_index_ic),
+                    contentDescription = null
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "UV index",
+                    style = MaterialTheme.typography.headlineSmall
+                )
+            }
             Text(
                 text = weatherInfo.uvIndex.toString(),
                 style = MaterialTheme.typography.displayMedium

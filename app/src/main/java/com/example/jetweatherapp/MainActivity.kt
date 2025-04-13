@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import com.example.jetweatherapp.ui.daily.DailyScreen
 import com.example.jetweatherapp.ui.home.HomeScreen
 import com.example.jetweatherapp.ui.theme.JetWeatherAppTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +30,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun JetWeatherApp(modifier: Modifier = Modifier) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-        HomeScreen(modifier = Modifier.padding(innerPadding))
+        DailyScreen(modifier = Modifier.padding(innerPadding))
     }
 }
