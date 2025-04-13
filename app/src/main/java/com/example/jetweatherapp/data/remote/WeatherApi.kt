@@ -10,8 +10,8 @@ interface WeatherApi {
 
     @GET(K.END_POINT)
     suspend fun getWeatherData(
-        @Query(ApiParameters.LATITUDE) latitude: Float = -6.8f,
-        @Query(ApiParameters.LONGITUDE) longitude: Float = -39.28f,
+        @Query(ApiParameters.LATITUDE) latitude: Float = 48.856667f,
+        @Query(ApiParameters.LONGITUDE) longitude: Float = 2.3519444f,
         @Query(ApiParameters.DAILY) daily: Array<String> = arrayOf(
             "weather_code",
             "temperature_2m_max",
@@ -34,6 +34,6 @@ interface WeatherApi {
             "temperature_2m"
         ),
         @Query(ApiParameters.TIME_FORMAT) timeformat: String = "unixtime",
-        @Query(ApiParameters.TIMEZONE) timeZone: String = "Africa/Dar_se_Salaam"
+        @Query(ApiParameters.TIMEZONE) timeZone: String = "Europe/Paris"
     ): ApiWeather
 }
